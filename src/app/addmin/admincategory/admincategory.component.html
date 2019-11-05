@@ -1,0 +1,46 @@
+<div class="container">
+  <form [formGroup]="categoryForm">
+    <div class="container">
+      <div class="col-lg-12 marginTop">
+          <strong class="col-lg-2">Catageory</strong>
+          <div class="col-lg-4">
+          <input class="form-control" formControlName="category" type="text" /></div>
+      </div>
+            
+      <div class="marginTop col-lg-12">
+      <strong class="col-lg-2">Description</strong>
+      <div class=" col-lg-8">
+          <textarea class="form-control" formControlName="description"></textarea>                
+      </div>
+      </div>
+      <div class="marginTop col-lg-12 col-lg-offset-6">
+      <input type="submit" value="Add Category" class="btn btn-primary" (click)="categoryFormSubmit(categoryForm.value)"/>
+      </div>
+    </div>
+    </form>
+    
+    <table class="table table-hover table-inverse table-responsive">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Serial Number</th>
+          <th>Category Name</th>
+          <th>Description</th>
+          <th>Creation on </th>
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of Cat;let j=index">
+            <td scope="row">{{j+1}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.description}}</td>
+            <td>{{i.createdOn | date}}</td>
+            <td>
+              <button  class="btn btn-danger" (click)="deleteCategorybyId(i._id)">delete</button>
+              <button class="btn btn-success" >edit</button>
+            </td>
+          </tr>
+         
+        </tbody>
+    </table>
+</div>
