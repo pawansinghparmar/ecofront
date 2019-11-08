@@ -24,6 +24,7 @@ import { DropDownListAllModule } from "@syncfusion/ej2-angular-dropdowns";
       {path:"home",component:HomeComponent,canActivate:[AdminloginService]},
       {path:"category",component:AdmincategoryComponent,canActivate:[AdminloginService]},
       {path:"subcategory",component:AdminsubcategoryComponent,canActivate:[AdminloginService]},
+      {path:"subsubcategory",component:AdminsubsubcategoryComponent,canActivate:[AdminloginService]},
       
     ]),
     FormsModule,

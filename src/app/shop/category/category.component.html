@@ -25,44 +25,20 @@
                       </div>
                       <div class="widgets_inner">
                           <ul class="list">
-                              <li>
-                                  <a href="#">Fruits and Vegetables</a>
-                              </li>
-                              <li class="sub-menu">
+                            
+                              <li class="sub-menu" *ngFor="let i of CategoryData" >
                                   <a href="#Electronics" class=" d-flex justify-content-between">
-                                      Electronics
-                                      <div class="right ti-plus"></div>
+                                      {{i.name}}
+                                     
                                   </a>
-                                  <ul>
-                                      <li>
-                                          <a href="#Electronics">Home Appliances</a>
+                                  <ul >
+                                      <li *ngFor="let j of i.getcategorySubcategory" >
+                                          <a href="#Electronics">{{j.name}}</a>
                                       </li>
-                                      <li>
-                                          <a href="#Electronics">Smartphones</a>
-                                      </li>
-                                      <li>
-                                          <a href="#Electronics">Kitchen Appliances</a>
-                                      </li>
-                                      <li>
-                                          <a href="#Electronics">Computer Accessories</a>
-                                      </li>
-                                      <li>
-                                          <a href="#Electronics">Meat Alternatives</a>
-                                      </li>
-                                      <li>
-                                          <a href="#Electronics">Appliances</a>
-                                      </li>
+                                     
                                   </ul>
                               </li>
-                              <li>
-                                  <a href="#">Cooking</a>
-                              </li>
-                              <li>
-                                  <a href="#">Beverages</a>
-                              </li>
-                              <li>
-                                  <a href="#">Home and Cleaning</a>
-                              </li>
+                          
                           </ul>
                       </div>
                   </aside>

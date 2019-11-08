@@ -11,7 +11,7 @@ export class AdminsubcategoryComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
   Categories;Catdata;
-  public fields={text:'name',value:'_id'};
+  public fields={text:'name',value:'id'};
   public placeholder="please select any category"
   ngOnInit() {
     this.getAllCategories();
@@ -19,7 +19,7 @@ export class AdminsubcategoryComponent implements OnInit {
   
   }
   getAllCategories(){
-    this.http.get('http://localhost:8080/api/category/getAllCategory').subscribe(this.getAllCat)
+    this.http.get('/api/category/getAllCategories').subscribe(this.getAllCat)
   }
   getAllCat=(ct)=>{
     this.Catdata = ct;
@@ -28,28 +28,34 @@ export class AdminsubcategoryComponent implements OnInit {
   }
 
   getAllsubCategories(){
-    this.http.get('http://localhost:8080/api/subcategory/findallsubcat').subscribe(this.getallcatecb)
+    this.http.get('/api/subcategory/getAllSubCategories').subscribe(this.getallcatecb)
   }
   subCatData;
   getallcatecb=(dt)=>{
-    this.subCatData=dt;
-    console.log(this.subCatData)
+
+    console.log(dt)
+     this.subCatData=dt;
+     console.log(this.subCatData)
 
   }
    subcategoryForm = new FormGroup({
-    category:new FormControl(''),
-    subcategory: new FormControl(''),
-    description: new FormControl('')
+    name:new FormControl(''),
+    date: new FormControl(Date.now()),
+    description: new FormControl(''),
+    categoryId:new FormControl('')
   })
   subcategoryFormSubmit(subcategoryvalue){
     console.log(subcategoryvalue)
-    this.http.post('http://localhost:8080/api/subcategory/create',subcategoryvalue).subscribe(this.subcreate)
+   this.http.post('/api/subcategory/createSubCategory',subcategoryvalue).subscribe(this.subcreate)
   }
   subcreate=(subcat)=>{
     console.log(subcat)
-    if(subcat._id){
+    if(subcat.id){
     alert("data saved succeffully");
     this.subcategoryForm.reset();
+     this.subcategoryForm.get('date').setValue(Date.now());
+    // this.subcategoryForm.get('categoryId').setValue('');
+    // this.subcategoryForm.get('description').setValue('');
     this.getAllsubCategories();
     }else{
       alert('data upload unsuccessful')
@@ -58,10 +64,29 @@ export class AdminsubcategoryComponent implements OnInit {
   }
   
   getCatNameById(id){
-    this.http.post('http://localhost:8080/api/category/getCatNameByid',{id:id}).subscribe(this.cc)
+    this.http.post('/api/subcategory/getCatNameByid',{id:id}).subscribe(this.cc)
   }
 cc=(dt)=>{
   return dt.name
 }
+deleteSubCategorybyId(id){
+console.log(id);
+this.http.post('/api/subcategory/deleteSubCategorybyid',{id:id}).subscribe(this.deletesubcat)
+}
+deletesubcat=(res)=>{
+  this.getAllsubCategories();
+}
 
+editsubcat;
+
+editSubCategory(id){
+  console.log(id)
+  // this.editsubcat=id.id;
+  // this.subname=id.name;
+  //  this.subdes=id.description
+  
+}
+cancleSubCategory(){
+  this.editsubcat = 1;
+}
 }
