@@ -26,6 +26,7 @@ import {MatSelectModule} from '@angular/material/select';
       {path:"subcategory",component:AdminsubcategoryComponent,canActivate:[AdminloginService]},
       {path:"subsubcategory",component:AdminsubsubcategoryComponent,canActivate:[AdminloginService]},
       {path:"brand",component:AdminbrandComponent,canActivate:[AdminloginService]},
+      {path:"product",component:AdminproductComponent,canActivate:[AdminloginService]},
     ]),
     FormsModule,
     ReactiveFormsModule,
