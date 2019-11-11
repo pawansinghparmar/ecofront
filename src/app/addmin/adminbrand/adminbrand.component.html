@@ -1,3 +1,55 @@
-<p>
-  adminbrand works!
-</p>
+<div class="container">
+  	<div class="row">
+        <div class="col-md-4">
+          	<div class="form_main">
+                <h4 class="heading"><strong>Add </strong>Brand <span></span></h4>
+                <div class="form">
+                    <div  [formGroup]="brandForm" id="contactFrm" name="contactFrm">
+    
+                        <ejs-dropdownlist  (change)="getSubcategories($event)" id='ddlelement' formControlName="categoryid"  [dataSource]='Catdata' [fields]="catfields"  [placeholder]='catplaceholder' popupHeight='200px' popupWidth='250px' ></ejs-dropdownlist>
+                        <ejs-dropdownlist *ngIf="subcategoryData" (change)="getSubSubCategories($event)"  id='ddlelement' formControlName="subcategoryid"  [dataSource]='subcategoryData' [fields]="subcatfields"  [placeholder]='subcatplaceholder' popupHeight='200px' popupWidth='250px' ></ejs-dropdownlist>
+                        <ejs-dropdownlist *ngIf="subsubcatData"  id='ddlelement' formControlName="subsubcategoryid"  [dataSource]='subsubcatData' [fields]="subsubcatfields"  [placeholder]='subsubcatplaceholder' popupHeight='200px' popupWidth='250px' ></ejs-dropdownlist>
+                        <input type="text" formControlName="name"  placeholder="Please input Sub Sub Category Name"  class="txt">
+                        <input type="text" formControlName="description"  placeholder="Please input Description" class="txt">
+                         <input type="submit" value="submit" (click)="brandFormSubmit(brandForm.value)" class="txt2">
+                          </div>
+                         
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>S.N.</th>
+          <th>Brand Name</th>
+          <th>Sub Sub Category Name</th>
+          <th>Sub Category Name</th>
+          <th>Category Name</th>
+          <th>Creation Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of Brand;let j=index" >
+          <td scope="row">{{j+1}}</td>
+          <td>{{i.name}}</td>
+          <td>{{i.getbrandsubsubCategory[0].name}}</td>
+          <td>{{i.getbrandsubCategory[0].name}}</td>
+          <td>{{i.getsbrandCategory[0].name}}</td>
+          <td>{{i.creationDate | date}}</td>
+          <td>
+            <button>delete</button>
+            <button>edit</button>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+  
