@@ -13,8 +13,8 @@ import { AdminbrandComponent } from './adminbrand/adminbrand.component';
 import { AdminproductComponent } from './adminproduct/adminproduct.component';
 
 import { DropDownListAllModule } from "@syncfusion/ej2-angular-dropdowns";
-
-
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [AddminComponent, HomeComponent,AdmincategoryComponent, AdminsubcategoryComponent, AdminsubsubcategoryComponent, AdminbrandComponent, AdminproductComponent],
   imports: [
@@ -29,7 +29,8 @@ import { DropDownListAllModule } from "@syncfusion/ej2-angular-dropdowns";
     ]),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,DropDownListAllModule
+    HttpClientModule,DropDownListAllModule,MatInputModule,
+    MatSelectModule
   ],
   providers:[AdminloginService]
 })

@@ -32,6 +32,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from 'src/environments/environment.prod';
 import { RegisterComponent } from './register/register.component';
 import { AddminModule } from './addmin/addmin.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -64,7 +65,8 @@ import { AddminModule } from './addmin/addmin.module';
     AppRoutingModule,FormsModule,ReactiveFormsModule,HttpClientModule,
     AngularFireModule.initializeApp(environment.firbase),
     AngularFireAuthModule,
-    AddminModule
+    AddminModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
