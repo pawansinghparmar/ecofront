@@ -22,36 +22,28 @@
       <div class="col-lg-5">
         <div class="product_slider_img">
           <div id="vertical">
-            <div data-thumb="../../../assets/img/product_details/prodect_details_1.png">
-              <img src="../../../assets/img/product_details/prodect_details_1.png" />
+            <div >
+              <img src="{{Product.image}}" />
             </div>
-            <div data-thumb="../../../assets/img/product_details/prodect_details_2.png">
-              <img src="../../../assets/img/product_details/prodect_details_2.png"/>
-            </div>
-            <div data-thumb="../../../assets/img/product_details/prodect_details_3.png">
-              <img src="../../../assets/img/product_details/prodect_details_3.png" />
-            </div>
-            <div data-thumb="../../../assets/img/product_details/prodect_details_4.png">
-              <img src="../../../assets/img/product_details/prodect_details_4.png" />
-            </div>
+           
           </div>
         </div>
       </div>
-      <div class="col-lg-5 offset-lg-1">
+      <div class="col-lg-5 offset-lg-1" *ngIf="Product" >
         <div class="s_product_text">
-          <h3>Faded SkyBlu Denim Jeans</h3>
-          <h2>$149.99</h2>
+          <h3> {{Product.getBrandofProduct[0].name}}  {{Product.name}}</h3>
+          <h2>${{Product.price}}</h2>
           <ul class="list">
             <li>
               <a class="active" href="#">
-                <span>Category</span> : Household</a>
+                <span>Category</span> : {{Product.getCategoryofproduct[0].name}}</a>
             </li>
             <li>
-              <a href="#"> <span>Availibility</span> : In Stock</a>
+              <a href="#"> <span>Availibility</span> : {{Product.quantity}}</a>
             </li>
           </ul>
           <p>
-              Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for something that can make your interior look awesome, and at the same time.
+             {{Product.description}}
           </p>
           <div class="card_area">
             <div class="product_count d-inline-block">
