@@ -33,6 +33,7 @@ import { environment } from 'src/environments/environment.prod';
 import { RegisterComponent } from './register/register.component';
 import { AddminModule } from './addmin/addmin.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireStorageModule } from "@angular/fire/storage";
 
 
 
@@ -64,7 +65,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,FormsModule,ReactiveFormsModule,HttpClientModule,
     AngularFireModule.initializeApp(environment.firbase),
-    AngularFireAuthModule,
+    AngularFireAuthModule,AngularFireStorageModule,
     AddminModule,
     BrowserAnimationsModule
   ],

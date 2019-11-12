@@ -1,3 +1,62 @@
-<p>
-  adminproduct works!
-</p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4">
+      <div class="form_main">
+                  <h4 class="heading"><strong>Add </strong> Product <span></span></h4>
+                  <div class="form">
+                  <div  [formGroup]="ProductForm" id="contactFrm" name="contactFrm">
+  
+                      <ejs-dropdownlist  (change)="getSubcategories($event)" id='ddlelement' formControlName="categoryid"  [dataSource]='Catdata' [fields]="fields"  [placeholder]='placeholder' popupHeight='200px' popupWidth='250px' ></ejs-dropdownlist>
+                      <ejs-dropdownlist *ngIf="subcategoryData" (change)="getSubSubCategories($event)"  id='ddlelement1' formControlName="subcategoryid"  [dataSource]='filterCategory' [fields]="subfields"  [placeholder]='subplaceholder' popupHeight='200px' popupWidth='250px' ></ejs-dropdownlist>
+                      <ejs-dropdownlist *ngIf="subsubcatData" (change)="getBranddata($event)"  id='ddlelement' formControlName="subsubcategoryid"  [dataSource]='subsubcatData' [fields]="subsubcatfields"  [placeholder]='subsubcatplaceholder' popupHeight='200px' popupWidth='250px' ></ejs-dropdownlist>
+                      <ejs-dropdownlist *ngIf="brandData"  id='ddlelement' formControlName="brandid"  [dataSource]='brandData' [fields]="brandfields"  [placeholder]='brandplaceholder' popupHeight='200px' popupWidth='250px' ></ejs-dropdownlist>
+                      <input type="text" formControlName="name"  placeholder="Please input Sub Sub Category Name"  class="txt">
+                      <input type="text" formControlName="description"  placeholder="Please input Description" class="txt">
+                      <input type="number" formControlName="quantity"  placeholder="Please input quantity" class="txt">
+                      <input type="number" formControlName="price"  placeholder="Please input price" class="txt">
+                      <input type="file" (change)="uploadPhoto($event)"   placeholder="Please Select image" class="txt">
+                       <input type="submit" value="submit" (click)="ProductFormSubmit(ProductForm.value)" class="txt2">
+                        </div>
+                       
+              </div>
+              </div>
+          </div>
+    </div>
+  </div>
+
+  <div class="container" *ngIf="Product" >
+    <table class="table">
+      <thead>
+        <tr>
+          <th>S.N.</th>
+          <th>Product</th>
+          <th>Brand</th>
+          <th>Sub Sub</th>
+          <th>Sub Category</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of Product;let i=index" >
+          <td scope="row">{{i+1}}</td>
+          <td>{{p.name}}</td>
+          <td>{{p.getBrandofProduct[0].name}}</td>
+          <td>{{p.getSubSubCategoryofProduct[0].name}}</td>
+          <td>{{p.getSubcategoryofProduct[0].name}}</td>
+          <td>{{p.getCategoryofproduct[0].name}}</td>
+          <td>{{p.price}}</td>
+          <td>{{p.quantity}}</td>
+          <td>
+            <img height="50px" src="{{p.image}}" alt="">
+          </td>
+          <td><button>delete</button>
+          <button>edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

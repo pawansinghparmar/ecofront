@@ -24,11 +24,14 @@ export class AdminbrandComponent implements OnInit {
   })
   brandFormSubmit(r){
     console.log(r);
-//    this.http.post("/api/brand/createBrand",r).subscribe(this.brandcb)
+   this.http.post("/api/brand/createBrand",r).subscribe(this.brandcb)
   }
   brandcb=(result)=>{
     console.log(result);
     this.brandForm.reset();
+    this.getAllBrand();
+    this.getAllData();
+
   }
   Catdata;
   getAllData(){
