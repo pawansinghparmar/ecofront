@@ -1,24 +1,28 @@
 <!-- Nav tabs -->
-<ul class="nav nav-tabs" id="navId">
-  <li class="nav-item">
-    <a [routerLink]="['/admin/category']" routerLinkActive="router-link-active"  class="nav-link active">Add Category</a>
+<ul class="nav nav-tabs btn-outline-*" id="navId">
+  <li class="nav-item col-sm-2 mb-2">
+    <a [routerLink]="['/admin/category']" routerLinkActive="router-link-active"  class="nav-link active btn btn-outline-secondary">Add Category</a>
   </li>
 
-  <li class="nav-item">
-    <a [routerLink]="['/admin/subcategory']" routerLinkActive="router-link-active"  class="nav-link active">Add Sub-Category</a>
+  <li class="nav-item col-sm-2">
+    <a [routerLink]="['/admin/subcategory']" routerLinkActive="router-link-active"  class="nav-link active btn btn-outline-secondary">Add Sub-Category</a>
   </li>
-  <li class="nav-item">
-    <a [routerLink]="['/admin/subsubcategory']" class="nav-link active">Add Sub-Sub-Category</a>
+  <li class="nav-item col-sm-2">
+    <a [routerLink]="['/admin/subsubcategory']" class="nav-link active btn btn-outline-secondary">Add Sub-Sub-Category</a>
   </li>
-  <li class="nav-item">
-    <a [routerLink]="['/admin/brand']" class="nav-link active">Add Brand</a>
+  <li class="nav-item col-sm-2">
+    <a [routerLink]="['/admin/brand']" class="nav-link active btn btn-outline-secondary">Add Brand</a>
   </li>
-  <li class="nav-item">
-    <a [routerLink]="['/admin/product']" class="nav-link active">Add Product</a>
+  <li class="nav-item col-sm-2">
+    <a [routerLink]="['/admin/product']" class="nav-link active btn btn-outline-secondary">Add Product</a>
   </li>
-
-
 </ul>
+
+<!-- <button class="btn btn-danger" (click)="getAllFireaseUsers()"  >Get All users Availbele </button> -->
+
+
+
+
 
 
 <router-outlet></router-outlet>

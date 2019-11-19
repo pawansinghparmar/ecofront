@@ -29,8 +29,9 @@ const routes: Routes = [
   {path:"single-blog",component:SingleBlogComponent},
   {path:"contact",component:ContactComponent},
   {path:"reg",component:RegisterComponent},
-  {path:'admin',loadChildren: ()=> import('./addmin/addmin.module').then(m=> m.AddminModule)}
-  ];
+  {path:'admin',loadChildren: ()=> import('./addmin/addmin.module').then(m=> m.AddminModule)},
+  {path:'user',loadChildren:()=>import('./user/user.module').then(u=>u.UserModule)}  
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

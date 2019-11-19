@@ -34,6 +34,9 @@ import { RegisterComponent } from './register/register.component';
 import { AddminModule } from './addmin/addmin.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireStorageModule } from "@angular/fire/storage";
+import { CustomerModule } from './customer/customer.module';
+import { UserModule } from './user/user.module';
+
 
 
 
@@ -59,7 +62,8 @@ import { AngularFireStorageModule } from "@angular/fire/storage";
     BlogComponent,
     SingleBlogComponent,
     ContactComponent,
-    RegisterComponent
+    RegisterComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -67,7 +71,9 @@ import { AngularFireStorageModule } from "@angular/fire/storage";
     AngularFireModule.initializeApp(environment.firbase),
     AngularFireAuthModule,AngularFireStorageModule,
     AddminModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CustomerModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

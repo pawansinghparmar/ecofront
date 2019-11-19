@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
+import { AngularFireAuth } from "@angular/fire/auth";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth:AngularFireAuth) { }
 
   ngOnInit() {
   }
-
+  getAllFireaseUsers(){
+   
+  }
 }

@@ -1,11 +1,22 @@
 
 
-
-<div class="form-group" [formGroup]="adminForm"  >
-  <input type="email" class="form-control"  formControlName="email"  aria-describedby="helpId" placeholder="email">
-  <input type="text" class="form-control" formControlName="username" aria-describedby="helpId" placeholder="username">
-  <input type="password" class="form-control" formControlName="password"  aria-describedby="helpId" placeholder="password">
-  <input type="button" value="login" class="btn btn-primary" (click)="adminFormSubmit(adminForm.value)" >
-
-
+<div [formGroup]="adminForm"  >
+  <div class="container">  
+    <div class="form-group row">
+      <label class="col-sm-3">Email address</label>
+      <input type="email" class="form-control col-sm-6"  formControlName="email"  aria-describedby="helpId" placeholder="email">
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3">User Name</label>
+      <input type="text" class="form-control col-sm-6" formControlName="username" aria-describedby="helpId" placeholder="username">
+    </div>
+    <div class="form-group row ">
+        <label class="col-sm-3">Password</label>
+      <input type="password" class="form-control col-sm-6" formControlName="password"  aria-describedby="helpId" placeholder="password">
+      </div>
+    <div class="form-group row">
+        <label class="col-sm-3"></label>
+      <input type="button" value="login" class="btn btn-primary" (click)="adminFormSubmit(adminForm.value)" >
+    </div>
+  </div>
 </div>

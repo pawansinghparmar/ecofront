@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from "@angular/router";
-import {FormGroup,FormControl  } from "@angular/forms";
+import {FormGroup,FormControl,Validators} from "@angular/forms";
 import{HttpClient} from '@angular/common/http';
 
 import Swal from 'sweetalert2'
@@ -15,18 +15,22 @@ export class AdmincategoryComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    console.log('running on ng onibit')
+    console.log('running on ng oninit')
     this.getAllCategories();
   }
 
   categoryForm  = new FormGroup({
-    name: new FormControl(''),
-    description:new FormControl(''),
+    name: new FormControl('',Validators.required),
+    description:new FormControl('',Validators.required),
     creationDate:new FormControl(Date.now())
   });
   categoryFormSubmit(c){
-
-   console.log(c)
+if(this.categoryForm.valid){
+  console.log(c)
+}else{
+  Swal.fire('Please add all the required fields')
+}
+  
  this.http.post('/api/category/createCategory',c).subscribe(this.creatcb)
   }
   creatcb=(result)=>{
@@ -37,16 +41,14 @@ export class AdmincategoryComponent implements OnInit {
         title:"Your Category is saved",
         text:"Your Category Name is   "+result.name,
       
-      })
-
-      
+      })      
      this.categoryForm.reset()
      this.categoryForm.get('creationDate').setValue(Date.now())
       this.getAllCategories();
     }else{
       alert("Operation Failed!")
     }
-
+    this.showTable()
   }
 getAllCategories(){
   this.http.get('/api/category/getAllCategories').subscribe(this.save)
@@ -87,12 +89,21 @@ console.log(obj)
   this.http.post('/api/category/editCategory',obj).subscribe(r=>{
     this.editstat=1;
   this.getAllCategories();  
-  
+
   })
 
 }
 cancle(){
   this.editstat=1;
 }
+showForm(){
+  document.getElementById("catform").style.display="block"
+  document.getElementById("listTable").style.display="none"
+}
+showTable(){
+  document.getElementById("catform").style.display="none"
+  document.getElementById("listTable").style.display="block"
+}
+
 
 }

@@ -36,8 +36,9 @@ export class AdminsubcategoryComponent implements OnInit {
     console.log(dt)
      this.subCatData=dt;
      console.log(this.subCatData)
+   }
 
-  }
+
    subcategoryForm = new FormGroup({
     name:new FormControl(''),
     date: new FormControl(Date.now()),
@@ -52,6 +53,7 @@ export class AdminsubcategoryComponent implements OnInit {
     console.log(subcat)
     if(subcat.id){
     alert("data saved succeffully");
+    
     this.subcategoryForm.reset();
      this.subcategoryForm.get('date').setValue(Date.now());
     // this.subcategoryForm.get('categoryId').setValue('');
@@ -60,6 +62,7 @@ export class AdminsubcategoryComponent implements OnInit {
     }else{
       alert('data upload unsuccessful')
     }
+    this.showTable()
 
   }
   
@@ -88,5 +91,14 @@ editSubCategory(id){
 }
 cancleSubCategory(){
   this.editsubcat = 1;
+}
+
+showForm(){
+  document.getElementById("catform").style.display="block"
+  document.getElementById("listTable").style.display="none"
+}
+showTable(){
+  document.getElementById("catform").style.display="none"
+  document.getElementById("listTable").style.display="block"
 }
 }
