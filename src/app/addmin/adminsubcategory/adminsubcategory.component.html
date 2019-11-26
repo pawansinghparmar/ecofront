@@ -19,11 +19,11 @@
 <div class="form-group row ">
     <div class="col-sm-2"></div>
     <span>
-      <input type="submit" value="Add Sub Category" class="btn btn-primary mr-1" (click)="subcategoryFormSubmit(subcategoryForm.value)"/>
+      <input type="submit" value="Add Sub Category" class="btn-primary mr-1" (click)="subcategoryFormSubmit(subcategoryForm.value)"/>
   </span>
     
     <span>
-        <button class="btn btn-danger" (click)="showTable()">Cancle</button>
+        <button class=" btn-danger" (click)="showTable()">Cancle</button>
     </span>  
   </div>
   </div>  
@@ -57,8 +57,8 @@
           <td *ngIf = "editsubcat !=s.id">{{s.description}}</td>
           <td>{{s.creationDate | date}}</td>
           <td *ngIf = "editsubcat != s.id">
-            <button  class="btn btn-danger" (click)="deleteSubCategorybyId(s.id)">delete</button>
-            <button class="btn btn-success" (click) = "editSubCategory(s.id)">edit</button>
+            <button  class="btn-danger mr-1" (click)="deleteSubCategorybyId(s.id)">delete</button>
+            <button class="btn-success" (click) = "editSubCategory(s.id)">edit</button>
           </td>
         
         </tr>

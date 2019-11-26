@@ -1,5 +1,6 @@
 <div class="container">
 	<div class="row">
+    <div class="col-md-4"></div>
     <div class="col-md-4">
 		<div class="form_main">
                 <h4 class="heading"><strong>Add </strong> Sub Sub Category <span></span></h4>
@@ -11,22 +12,27 @@
                     <input type="text" formControlName="name"  placeholder="Please input Sub Sub Category Name"  class="txt">
                     <input type="text" formControlName="description"  placeholder="Please input Description" class="txt">
                     
-                     <input type="submit" value="submit" (click)="SubSubCategoryFormSubmit(SubSubCategoryForm.value)" class="txt2">
-                      </div>
+                     <input type="submit" value="submit" (click)="SubSubCategoryFormSubmit(SubSubCategoryForm.value)" class="btn-primary mr-1">
+                      <button class="btn-danger"(click)=showdata() >Cancle</button> 
+                    </div>
                      
             </div>
             </div>
         </div>
 	</div>
 </div>
-<div class="container">
-  <table class="table">
+<!-- <div class="container">
+  
+  <button class="btn btn-secondary" (click)="openform()">Insert Sub Sub Category</button>
+  
+  <table class="table table-hover table-inverse" id="showdata">
     <thead>
       <tr>
         <th>S.N.</th>
-        <th>Sub Sub Category Name</th>
-        <th>Sub Category Name</th>
         <th>Category Name</th>
+        
+        <th>Sub Category Name</th>
+        <th>Sub Sub Category Name</th>
         <th>Description</th>
         <th>Creation Date</th>
         <th>Actions</th>
@@ -35,14 +41,75 @@
     <tbody>
       <tr *ngFor="let i of SubSubCategoryData;let j=index" >
         <td scope="row">{{j+1}}</td>
-        <td>{{i.name}}</td>
-        <td>{{i.getsubsCategory[0].name}}</td>
-        <td>{{i.getsCategory[0].name}}</td>
-        <td>{{i.description}}</td>
-        <td>{{i.creationDate | date}}</td>
+        <td *ngIf = "editsubcat !=i.id; else subsubcategoryedit">
+            {{i.getsCategory[0].name}}</td>
+        <td *ngIf = "editsubcat !=i.id;">{{i.getsubsCategory[0].name}}</td>
+        <td *ngIf = "editsubcat !=i.id; ">{{i.name}}</td>
+        <td *ngIf = "editsubcat !=i.id">{{i.description}}</td>
+        <td *ngIf="editsubcat !=i.id">{{i.creationDate | date}}</td>
+        <td *ngIf = "editsubcat !=i.id">
+          <button class="btn-primary mr-1" (click)="deleteSubSubCategory(i.id)">delete</button>
+          <button class="btn-danger"(click)="editSubSubCategory(i)">edit</button>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+ -->
+
+<!-- <pre>{{ Catdata |json}}</pre> -->
+
+<!-- <ng-template  #subsubcategoryedit> -->
+
+    <!-- <td><select [(ngModel)]="CatData" >
+        <option *ngFor="let cat of Catdata" >{{cat.name}}</option></select></td>
+  
+ 
+
+  <td><select [(ngModel)]="SubCatData">
+   <option *ngFor="let subcat of SubCatData">{{subcat.name}}</option></select></td>
+  
+   <td><input type="text" [(ngModel)]="subsubname"  name="" id=""></td>
+
+    <td><input type="text" name="" [(ngModel)]="subsubdes" id=""></td>
+    <td>{{creationdate | date}}</td>
+    <td>
+      <button class="btn-danger mr-1" (click)="cancleSubSubCategory()">cancel</button>
+      <button class="btn-success" (click)="saveSubSubCategory()">save</button>
+    </td> -->
+    
+    <!-- </ng-template> -->
+
+
+<div class="container">
+  
+  <button class="btn btn-secondary" (click)="openform()">Insert Sub Sub Category</button>
+  
+  <table class="table table-hover table-inverse" id="showdata">
+    <thead>
+      <tr>
+        <th>S.N.</th>
+        <th>Category Name</th>
+        <th>Sub Category Name</th>
+        <th>Sub Sub Category Name</th>
+        <th>Description</th>
+        <th>Creation Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of SubSubCategoryData;let j=index" >
+        <td scope="row">{{j+1}}</td>
         <td>
-          <button>delete</button>
-          <button>edit</button>
+            {{i.getsCategory[0].name}}</td>
+        <td>{{i.getsubsCategory[0].name}}</td>
+        <td >{{i.name}}</td>
+        <td>{{i.description}}</td>
+        <td >{{i.creationDate | date}}</td>
+        <td>
+          <button class="btn-primary mr-1" (click)="deleteSubSubCategory(i.id)">delete</button>
+          <button class="btn-danger"(click)="editSubSubCategory(i)">edit</button>
         </td>
       </tr>
       
@@ -50,5 +117,26 @@
   </table>
 </div>
 
-
-<!-- <pre>{{ Catdata |json}}</pre> -->
+<div class="container" id="showform">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+      <div class="form_main">
+                  <h4 class="heading"><strong>Update</strong> Sub Sub Category <span></span></h4>
+                  <div class="form">
+                  <div  [formGroup]="SubSubCategoryEditForm" id="contactFrm" name="contactFrm">
+                
+                      <ejs-dropdownlist  (change)="check($event)" id='ddlelement' formControlName="categoryid"  [dataSource]='Catdata' [fields]="fields"  placeholder="" popupHeight='200px' popupWidth='250px' ></ejs-dropdownlist>
+                      <ejs-dropdownlist *ngIf="subcategoryData"  id='ddlelement1' formControlName="subcategoryid"  [dataSource]='filterCategory' [fields]="subfields"  [placeholder]='subplaceholder' popupHeight='200px' popupWidth='250px' ></ejs-dropdownlist>
+                      <input type="text" formControlName="name"  placeholder="{{subsubcatname}}"  class="txt">
+                      <input type="text" formControlName="description"  placeholder="{{subsubdes}}" class="txt">
+                      
+                      <input type="submit" value="Update" (click)="updateSubSubCategory(SubSubCategoryEditForm.value)" class="btn-primary mr-1">
+                      <button class="btn-danger"(click)=showdata() >Cancle</button> 
+                  </div>
+                       
+              </div>
+              </div>
+          </div>
+        </div>
+</div>
